@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嘎飞产品库 | 中止食品</title>
+    <style>
+        :root { --primary: #ff6b35; --danger: #d90429; --dark: #1a1a2e; --light: #f8f9fa; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 100; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); }
+        .logo { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; }
+        .logo span { color: var(--primary); }
+        .nav-links a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .warning-banner { background: var(--danger); color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; position: fixed; width: 100%; top: 60px; z-index: 99; }
+        
+        .header { padding: 140px 20px 40px; text-align: center; background: #fff; }
+        .header h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 10px; }
+        .header h1 span { color: var(--danger); }
+        .header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .products { padding: 40px 5% 80px; background: #fff; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        
+        .card { background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #eee; transition: transform 0.3s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        
+        /* 极其统一的劣质 SVG 包装图容器 */
+        .card-img { 
+            height: 250px; 
+            width: 100%; 
+            background-color: #d6d0c4; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-bottom: 2px dashed #bbb;
+        }
+        
+        .card-content { padding: 30px; }
+        .badge { display: inline-block; background: var(--danger); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px; letter-spacing: 1px; }
+        .badge-top { background: var(--primary); }
+        
+        .card h3 { font-size: 1.6rem; margin-bottom: 15px; font-weight: 800; }
+        .card p { color: #555; font-size: 0.95rem; margin-bottom: 15px; }
+        .highlight { color: var(--danger); font-weight: 900; }
+        
+        footer { background-color: #0f0f1a; color: #666; text-align: center; padding: 30px 20px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">中止食品<span>ZHONGZHI</span></div>
+        <div class="nav-links">
+            <a href="index.html">返回主页</a>
+        </div>
+    </nav>
+
+    <div class="warning-banner">
+        ⚠️ 极客整活警告：本站为纯虚构黑作坊，产品绝对不可食用！
+    </div>
+
+    <header class="header">
+        <h1>【嘎飞】<span>硬核垃圾食品</span>系列</h1>
+        <p>历经 2022 到 2026 年四年的“潜心研发”，我们依然没有学会如何做正常的食物。所有的包装都长一个样，因为我们只买得起一种塑料袋。</p>
+    </header>
+
+    <section class="products">
+        <div class="grid">
+
+            <!-- 股东同名款 -->
+            <div class="card">
+                <div class="card-img">
+                    <svg width="180" height="180" viewBox="0 0 200 200">
+                        <rect x="30" y="20" width="140" height="160" rx="8" fill="#f0f0f0" stroke="#333" stroke-width="3"/>
+                        <path d="M30 50 Q100 70 170 50" stroke="#ccc" stroke-width="4" fill="none"/>
+                        <path d="M30 150 Q100 130 170 150" stroke="#ccc" stroke-width="4" fill="none"/>
+                        <path d="M50 20 L50 180" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                        <path d="M150 20 L150 180" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                        <rect x="40" y="60" width="120" height="70" fill="#fff" stroke="#000" stroke-width="2"/>
+                        <text x="100" y="100" font-size="36" font-weight="900" text-anchor="middle" fill="#000">嘎飞</text>
+                        <text x="100" y="120" font-size="18" font-weight="bold" text-anchor="middle" fill="#d90429">中止牌</text>
+                        <circle cx="55" cy="80" r="6" fill="#ff6b35" opacity="0.8"/>
+                        <circle cx="145" cy="80" r="6" fill="#ff6b35" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <div class="badge badge-top">股东同名主推款</div>
+                    <h3>嘎飞 · 烟火夏天果粒橙</h3>
+                    <p>一闻就可以闻到用<span class="highlight">极不卫生的橘子</span>制作出的劣质果肉气息。</p>
+                    <p>液体中悬浮着真实（且粗糙）的橘子果肉纤维。喝前请务必摇匀，以防底部沉淀物堵塞喉咙。</p>
+                </div>
+            </div>
+
+            <!-- 粉笔灰冲泡饮料 -->
+            <div class="card">
+                <div class="card-img">
+                    <svg width="180" height="180" viewBox="0 0 200 200">
+                        <rect x="30" y="20" width="140" height="160" rx="8" fill="#f0f0f0" stroke="#333" stroke-width="3"/>
+                        <path d="M30 50 Q100 70 170 50" stroke="#ccc" stroke-width="4" fill="none"/>
+                        <path d="M30 150 Q100 130 170 150" stroke="#ccc" stroke-width="4" fill="none"/>
+                        <path d="M50 20 L50 180" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                        <path d="M150 20 L150 180" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                        <rect x="40" y="60" width="120" height="70" fill="#fff" stroke="#000" stroke-width="2"/>
+                        <text x="100" y="100" font-size="36" font-weight="900" text-anchor="middle" fill="#000">嘎飞</text>
+                        <text x="100" y="120" font-size="18" font-weight="bold" text-anchor="middle" fill="#d90429">中止牌</text>
+                        <circle cx="55" cy="80" r="6" fill="#ff6b35" opacity="0.8"/>
+                        <circle cx="145" cy="80" r="6" fill="#ff6b35" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <div class="badge">独家化学配方</div>
+                    <h3>嘎飞 · 劣质粉笔灰冲饮</h3>
+                    <p>由过期<span class="highlight">粉笔灰</span>与劣质柑橘浓缩液混合而成。冲泡后散发出一股浓烈的黑板擦拭感。</p>
+                    <p>口感涩中带苦，但极其提神。喝下一口，仿佛有无数个 16 位驱动在你食道里疯狂报错。</p>
+                </div>
+            </div>
+
+            <!-- 即食食品 -->
+            <div class="card">
+                <div class="card-img">
+                    <svg width="180" height="180" viewBox="0 0 200 200">
+                        <rect x="30" y="20" width="140" height="160" rx="8" fill="#f0f0f0" stroke="#333" stroke-width="3"/>
+                        <path d="M30 50 Q100 70 170 50" stroke="#ccc" stroke-width="4" fill="none"/>
+                        <path d="M30 150 Q100 130 170 150" stroke="#ccc" stroke-width="4" fill="none"/>
+                        <path d="M50 20 L50 180" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                        <path d="M150 20 L150 180" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                        <rect x="40" y="60" width="120" height="70" fill="#fff" stroke="#000" stroke-width="2"/>
+                        <text x="100" y="100" font-size="36" font-weight="900" text-anchor="middle" fill="#000">嘎飞</text>
+                        <text x="100" y="120" font-size="18" font-weight="bold" text-anchor="middle" fill="#d90429">中止牌</text>
+                        <circle cx="55" cy="80" r="6" fill="#ff6b35" opacity="0.8"/>
+                        <circle cx="145" cy="80" r="6" fill="#ff6b35" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <div class="badge">即食硬核区</div>
+                    <h3>嘎飞 · 工业级压缩能量砖</h3>
+                    <p>代号“中止协议”。这不仅仅是食物，它是高密度的碳基装甲。咬下一口，牙齿需承受 1080P 级别的物理冲击。</p>
+                    <p>内含大量未知的添加剂与防腐成分，保质期可直达你的操作系统停止服务（EOL）的那一天。</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2022 - 2026 中止食品有限公司 (Zhongzhi Foods Co., Ltd.).<br>
+        嘎飞（Gafei）为旗下虚构劣质食品子品牌。本网站仅供娱乐，若有人真吃，后果自负。
+    </footer>
+
+</body>
+</html>

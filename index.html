@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中止食品有限公司 | 成立于2022年</title>
+    <style>
+        :root { --primary: #ff6b35; --dark: #1a1a2e; --light: #f8f9fa; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 100; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); }
+        .logo { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; }
+        .logo span { color: var(--primary); }
+        .nav-links a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #fff3e0 0%, #ffd166 100%); padding: 100px 20px 40px; }
+        .hero-content { max-width: 900px; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; margin-bottom: 20px; line-height: 1.1; background: -webkit-linear-gradient(45deg, var(--dark), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: clamp(1rem, 2vw, 1.3rem); color: #555; margin-bottom: 20px; padding: 0 15px; }
+        .tagline { font-size: 0.9rem; color: var(--primary); font-weight: bold; letter-spacing: 2px; margin-bottom: 40px; }
+        .btn { display: inline-block; padding: 15px 40px; background-color: var(--primary); color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1rem; transition: transform 0.3s; box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 107, 53, 0.5); }
+
+        .team-section { padding: 80px 5%; background-color: var(--dark); color: #fff; text-align: center; }
+        .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 40px; }
+        .team-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .person-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px 20px; border-radius: 20px; width: 100%; max-width: 320px; backdrop-filter: blur(10px); transition: 0.3s; }
+        .person-card:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-5px); }
+        .person-name { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; margin-bottom: 5px; }
+        .person-title { font-size: 0.9rem; color: #888; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
+        .color-god { color: var(--primary); }
+        .color-shareholder { color: #ffd166; }
+        footer { background-color: #0f0f1a; color: #666; text-align: center; padding: 30px 20px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">中止食品<span>ZHONGZHI</span></div>
+        <div class="nav-links">
+            <a href="products.html">嘎飞产品库</a>
+            <a href="#team">幕后推手</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>中止食品<br>打破次元的味觉</h1>
+            <p>用最简单粗暴的工艺，烘焙出直击灵魂的（化学）美味。</p>
+            <div class="tagline">EST. 2022 | 专注小作坊虚构食品四周年 (2022-2026)</div>
+            <br>
+            <a href="products.html" class="btn">进入嘎飞产品库</a>
+        </div>
+    </header>
+
+    <section class="team-section" id="team">
+        <h2 class="section-title">幕后推手</h2>
+        <div class="team-grid">
+            <div class="person-card">
+                <div class="person-name color-god">Dibajiaba</div>
+                <div class="person-title">小作坊生产负责人</div>
+                <p style="color:#aaa; font-size: 0.9rem;">负责在城中村昏暗的出租屋里，亲手封装那些来历不明的原料。主打一个生死有命，富贵在天，绝对不戴手套。</p>
+            </div>
+            <div class="person-card">
+                <div class="person-name color-shareholder">烟火夏天</div>
+                <div class="person-title">普通股东</div>
+                <p style="color:#aaa; font-size: 0.9rem;">投了点闲钱，对生产环节毫不知情。平时从不过问产品，只在乎年底那个虚构的小作坊能不能给他分点红。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2022 - 2026 中止食品有限公司 (Zhongzhi Foods Co., Ltd.).<br>
+        本网站为极客整活项目，所有产品均为虚构，请勿在现实中食用。
+    </footer>
+
+</body>
+</html>
