@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>官方讨论区 | 中止食品</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root { --bg: #ffffff; --surface: #f9f9f9; --primary: #d90429; --text: #111111; --text-muted: #555555; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.8; padding-bottom: 100px; }
+        
+        nav { position: fixed; width: 100%; top: 0; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid #eeeeee; }
+        .logo { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; color: var(--text); }
+        .logo span { color: var(--primary); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 30px; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .container { max-width: 800px; margin: 160px auto 0; padding: 0 20px; }
+        .header { text-align: center; margin-bottom: 60px; }
+        .header h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; }
+        .header p { color: var(--text-muted); }
+
+        .post-box { background: var(--surface); padding: 40px; border-radius: 12px; margin-bottom: 50px; border: 1px solid #eeeeee; }
+        .post-box input, .post-box textarea { width: 100%; background: #fff; border: 1px solid #dddddd; color: var(--text); padding: 15px; border-radius: 8px; margin-bottom: 20px; outline: none; font-size: 1rem; transition: 0.3s; }
+        .post-box input:focus, .post-box textarea:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(217,4,41,0.1); }
+        .post-box textarea { resize: vertical; min-height: 100px; }
+        .post-box button { background: var(--text); color: #fff; border: none; padding: 14px 40px; border-radius: 50px; font-weight: 600; cursor: pointer; float: right; transition: 0.3s; }
+        .post-box button:hover { background: var(--primary); }
+
+        .list { display: flex; flex-direction: column; gap: 25px; }
+        .comment { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eeeeee; box-shadow: 0 5px 15px rgba(0,0,0,0.02); animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .comment-head { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center; }
+        
+        .name { font-weight: 800; color: var(--text); font-size: 1.05rem; }
+        .name.admin { color: #0033cc; } 
+        .name.shareholder { color: #ff6600; } 
+        
+        .time { color: #999; font-size: 0.85rem; }
+        .content { color: #444; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">中止食品 <span>ZHONGZHI</span></div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="products.html">产品库</a>
+            <a href="about.html">关于我们</a>
+            <a href="discuss.html">讨论区</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>医疗求助与病友交流</h1>
+            <p>分享您食用“嘎飞”系列产品后的真实症状。</p>
+        </div>
+
+        <div class="post-box">
+            <input type="text" id="username" placeholder="您的代号（如：烟火夏天 / Dibajiaba / 匿名受害者）">
+            <textarea id="message" placeholder="请描述您目前的肠胃状态或幻觉症状..."></textarea>
+            <button onclick="submitComment()">发布病历</button>
+        </div>
+
+        <div class="list" id="list"></div>
+    </div>
+
+    <script>
+        // 🚨 已为你填好真实的配置，无需修改 🚨
+        const SUPABASE_URL = 'https://oztrbybjckelucsjegg.supabase.co'; 
+        const SUPABASE_KEY = 'sb_publishable_j334tSVZRpuBfm-QtXp25A_1rmErSIR';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadData() {
+            const { data, error } = await supabase.from('comments').select('*').order('created_at', { ascending: false });
+            if (error) { console.error('加载失败，请检查数据库配置:', error); return; }
+            
+            const list = document.getElementById('list');
+            list.innerHTML = '';
+            
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'comment';
+                
+                let nameClass = 'name';
+                if (['Dibajiaba', 'D8+8', '天道'].includes(item.username)) nameClass += ' admin';
+                if (['烟火夏天'].includes(item.username)) nameClass += ' shareholder';
+
+                const date = new Date(item.created_at).toLocaleString('zh-CN');
+
+                div.innerHTML = `
+                    <div class="comment-head">
+                        <span class="${nameClass}">${item.username}</span>
+                        <span class="time">${date}</span>
+                    </div>
+                    <div class="content">${item.content}</div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        async function submitComment() {
+            const user = document.getElementById('username').value.trim() || '匿名受害者';
+            const msg = document.getElementById('message').value.trim();
+            
+            if (!msg) { alert('请输入您的症状描述！'); return; }
+
+            const { error } = await supabase.from('comments').insert([{ username: user, content: msg }]);
+            if (error) { 
+                alert('发送失败！请检查网络或数据库配置。'); 
+                console.error(error); 
+            } else {
+                document.getElementById('message').value = '';
+                loadData();
+            }
+        }
+
+        window.onload = loadData;
+    </script>
+</body>
+</html>

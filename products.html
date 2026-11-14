@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嘎飞官网 | 中止食品产品库</title>
+    <style>
+        :root { --bg: #ffffff; --surface: #f9f9f9; --primary: #d90429; --text: #111111; --text-muted: #555555; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.8; }
+        
+        nav { position: fixed; width: 100%; top: 0; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid #eeeeee; }
+        .logo { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; color: var(--text); }
+        .logo span { color: var(--primary); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 30px; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .header { padding: 160px 10% 60px; text-align: center; background: var(--surface); }
+        .header h1 { font-size: 2.8rem; font-weight: 900; color: var(--text); margin-bottom: 15px; letter-spacing: 1px; }
+        .header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; padding: 80px 10%; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--bg); border-radius: 12px; border: 1px solid #eeeeee; padding: 40px 30px; text-align: center; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.08); transform: translateY(-5px); border-color: #dddddd; }
+        
+        .card-img { width: 100%; height: 220px; display: flex; justify-content: center; align-items: center; margin-bottom: 25px; }
+        
+        .card h3 { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+        .tag { font-size: 0.8rem; color: var(--primary); font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; text-align: left; }
+
+        footer { text-align: center; padding: 50px; color: #999; font-size: 0.9rem; border-top: 1px solid #eeeeee; background: var(--surface); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">中止食品 <span>ZHONGZHI</span></div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="products.html">产品库</a>
+            <a href="about.html">关于我们</a>
+            <a href="discuss.html">讨论区</a>
+        </div>
+    </nav>
+
+    <header class="header">
+        <h1>嘎飞 系列产品</h1>
+        <p>极其罕见的食材配比，难以名状的味觉冲击。每一袋，都是对肠胃的终极试炼。</p>
+    </header>
+
+    <section class="grid">
+        <div class="card">
+            <div class="card-img">
+                <svg width="160" height="200" viewBox="0 0 200 250">
+                    <path d="M30 50 L170 50 L180 230 L20 230 Z" fill="#f4f4f4" stroke="#dddddd" stroke-width="2"/>
+                    <path d="M30 50 L40 30 L160 30 L170 50" fill="#eeeeee" stroke="#dddddd" stroke-width="2"/>
+                    <text x="100" y="145" font-size="52" font-weight="900" text-anchor="middle" fill="#1a1a1a" letter-spacing="4">嘎飞</text>
+                    <text x="100" y="175" font-size="14" font-weight="bold" text-anchor="middle" fill="#d90429" letter-spacing="2">ZHONGZHI FOODS</text>
+                </svg>
+            </div>
+            <div class="tag">最流行 & 经典首创</div>
+            <h3>浓郁小片片双重风味改进版</h3>
+            <p>精选不明肉质压制，表面涂有秘制黑红双拼糊状物。开袋即食，浓郁的腥香在唇齿间交织，食用后可能伴随轻度的空间扭曲感。</p>
+        </div>
+
+        <div class="card">
+            <div class="card-img">
+                <svg width="160" height="200" viewBox="0 0 200 250">
+                    <path d="M30 50 L170 50 L180 230 L20 230 Z" fill="#f4f4f4" stroke="#dddddd" stroke-width="2"/>
+                    <path d="M30 50 L40 30 L160 30 L170 50" fill="#eeeeee" stroke="#dddddd" stroke-width="2"/>
+                    <text x="100" y="145" font-size="52" font-weight="900" text-anchor="middle" fill="#1a1a1a" letter-spacing="4">嘎飞</text>
+                    <text x="100" y="175" font-size="14" font-weight="bold" text-anchor="middle" fill="#d90429" letter-spacing="2">ZHONGZHI FOODS</text>
+                </svg>
+            </div>
+            <div class="tag">股东同名限定款</div>
+            <h3>烟火夏天果粒橙</h3>
+            <p>保留了劣质橘皮与不明悬浮颗粒的原始质感。甘甜与腐败的微酸完美平衡，一口入魂，仿佛能听见肠胃在盛夏中绝望的悲鸣。</p>
+        </div>
+
+        <div class="card">
+            <div class="card-img">
+                <svg width="160" height="200" viewBox="0 0 200 250">
+                    <path d="M30 50 L170 50 L180 230 L20 230 Z" fill="#f4f4f4" stroke="#dddddd" stroke-width="2"/>
+                    <path d="M30 50 L40 30 L160 30 L170 50" fill="#eeeeee" stroke="#dddddd" stroke-width="2"/>
+                    <text x="100" y="145" font-size="52" font-weight="900" text-anchor="middle" fill="#1a1a1a" letter-spacing="4">嘎飞</text>
+                    <text x="100" y="175" font-size="14" font-weight="bold" text-anchor="middle" fill="#d90429" letter-spacing="2">ZHONGZHI FOODS</text>
+                </svg>
+            </div>
+            <div class="tag">极简主义高钙冲饮</div>
+            <h3>嘎飞 · 经典原味冲调粉</h3>
+            <p>刮取自废弃教室黑板的陈年粉笔灰，配以工业级增稠剂。冲泡后散发独特的粉尘清香，能有效让您的呼吸道体验八九十年代的古早质感。</p>
+        </div>
+
+        <div class="card">
+            <div class="card-img">
+                <svg width="160" height="200" viewBox="0 0 200 250">
+                    <path d="M30 50 L170 50 L180 230 L20 230 Z" fill="#f4f4f4" stroke="#dddddd" stroke-width="2"/>
+                    <path d="M30 50 L40 30 L160 30 L170 50" fill="#eeeeee" stroke="#dddddd" stroke-width="2"/>
+                    <text x="100" y="145" font-size="52" font-weight="900" text-anchor="middle" fill="#1a1a1a" letter-spacing="4">嘎飞</text>
+                    <text x="100" y="175" font-size="14" font-weight="bold" text-anchor="middle" fill="#d90429" letter-spacing="2">ZHONGZHI FOODS</text>
+                </svg>
+            </div>
+            <div class="tag">高强度能量补给</div>
+            <h3>嘎飞 · 工业级压缩能量砖</h3>
+            <p>莫氏硬度达到 7.5 的究极饱腹产品。不建议直接咀嚼，建议用液压机碾碎后兑水服用。<strong>保质期长达无限，可能是用外星陨石和防腐剂 1:1 压制而成，甚至能抵御核辐射。</strong></p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2022 - 2026 中止食品有限公司. 保留所有权利。
+        <br><span style="color:#d90429; font-weight:bold;">警告：本网站产品皆为虚构，现实中绝对不可食用。</span>
+    </footer>
+</body>
+</html>

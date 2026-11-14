@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 | 中止食品</title>
+    <style>
+        :root { --bg: #ffffff; --surface: #f9f9f9; --primary: #d90429; --text: #111111; --text-muted: #555555; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.8; }
+        
+        nav { position: fixed; width: 100%; top: 0; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid #eeeeee; }
+        .logo { font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; color: var(--text); }
+        .logo span { color: var(--primary); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 30px; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .container { max-width: 800px; margin: 180px auto 100px; padding: 0 20px; }
+        .title { text-align: center; margin-bottom: 80px; }
+        .title h1 { font-size: 2.5rem; font-weight: 900; color: var(--text); margin-bottom: 15px; }
+        .title p { color: var(--text-muted); font-size: 1.1rem; }
+
+        .team-grid { display: flex; flex-direction: column; gap: 40px; }
+        .member { background: var(--surface); border-radius: 12px; padding: 40px; display: flex; align-items: center; gap: 40px; border: 1px solid #eeeeee; }
+        
+        .member-info h2 { color: var(--text); font-size: 1.6rem; margin-bottom: 5px; font-weight: 800; }
+        .member-info .role { color: var(--primary); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; font-weight: bold; }
+        .member-info p { color: var(--text-muted); font-size: 1rem; }
+
+        @media (max-width: 600px) { .member { flex-direction: column; text-align: center; gap: 20px; padding: 30px; } }
+        footer { text-align: center; padding: 50px; color: #999; font-size: 0.9rem; border-top: 1px solid #eeeeee; background: var(--surface); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">中止食品 <span>ZHONGZHI</span></div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="products.html">产品库</a>
+            <a href="about.html">关于我们</a>
+            <a href="discuss.html">讨论区</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="title">
+            <h1>关于中止食品</h1>
+            <p>一群在地下室里，对未知风味有着病态执念的狂人。</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="member">
+                <div class="member-info">
+                    <h2>Dibajiaba</h2>
+                    <div class="role">创始人 & 终极封箱人</div>
+                    <p>常年戴着防毒面具穿梭于城中村的昏暗地下室。他拒绝透露原料来源，只知道他每天都在不知疲倦地封装那些散发着不详气息的黑色与红色糊状物。</p>
+                </div>
+            </div>
+            <div class="member">
+                <div class="member-info">
+                    <h2>烟火夏天</h2>
+                    <div class="role">首席神秘股东</div>
+                    <p>似乎对产品和生产环节一无所知，唯一关心的只有年底的分红数字。传闻他从未亲自试吃过任何一款“嘎飞”产品，这也是他能活到现在的原因。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2022 - 2026 中止食品有限公司. 保留所有权利。
+        <br><span style="color:#d90429; font-weight:bold;">警告：本网站为赛博整活项目，现实中请勿食用。</span>
+    </footer>
+</body>
+</html>
