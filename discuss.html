@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>官方讨论区 | 中止食品</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- 换用国内更稳定的 CDN 节点，防止加载失败 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/supabase-js/2.39.8/supabase.min.js"></script>
     <style>
-        :root { --bg: #ffffff; --surface: #f9f9f9; --primary: #d90429; --text: #111111; --text-muted: #555555; }
+        :root { 
+            --bg: #ffffff; 
+            --surface: #f9f9f9; 
+            --primary: #d90429; 
+            --text: #111111; 
+            --text-muted: #555555; 
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
         body { background: var(--bg); color: var(--text); line-height: 1.8; padding-bottom: 100px; }
         
@@ -30,7 +37,10 @@
 
         .list { display: flex; flex-direction: column; gap: 25px; }
         .comment { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eeeeee; box-shadow: 0 5px 15px rgba(0,0,0,0.02); animation: slideUp 0.4s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
         .comment-head { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center; }
         
         .name { font-weight: 800; color: var(--text); font-size: 1.05rem; }
@@ -61,6 +71,7 @@
         <div class="post-box">
             <input type="text" id="username" placeholder="您的代号（如：烟火夏天 / Dibajiaba / 匿名受害者）">
             <textarea id="message" placeholder="请描述您目前的肠胃状态或幻觉症状..."></textarea>
+            <!-- 按钮绑定点击事件 -->
             <button onclick="submitComment()">发布病历</button>
         </div>
 
@@ -68,56 +79,87 @@
     </div>
 
     <script>
-        // 🚨 已为你填好真实的配置，无需修改 🚨
+        // 数据库配置
         const SUPABASE_URL = 'https://oztrbybjckelucsjegg.supabase.co'; 
         const SUPABASE_KEY = 'sb_publishable_j334tSVZRpuBfm-QtXp25A_1rmErSIR';
 
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        async function loadData() {
-            const { data, error } = await supabase.from('comments').select('*').order('created_at', { ascending: false });
-            if (error) { console.error('加载失败，请检查数据库配置:', error); return; }
-            
-            const list = document.getElementById('list');
-            list.innerHTML = '';
-            
-            data.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'comment';
-                
-                let nameClass = 'name';
-                if (['Dibajiaba', 'D8+8', '天道'].includes(item.username)) nameClass += ' admin';
-                if (['烟火夏天'].includes(item.username)) nameClass += ' shareholder';
-
-                const date = new Date(item.created_at).toLocaleString('zh-CN');
-
-                div.innerHTML = `
-                    <div class="comment-head">
-                        <span class="${nameClass}">${item.username}</span>
-                        <span class="time">${date}</span>
-                    </div>
-                    <div class="content">${item.content}</div>
-                `;
-                list.appendChild(div);
-            });
+        // 初始化客户端
+        let supabase = null;
+        if (window.supabase) {
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
-        async function submitComment() {
-            const user = document.getElementById('username').value.trim() || '匿名受害者';
-            const msg = document.getElementById('message').value.trim();
+        // 加载留言
+        async function loadData() {
+            if (!supabase) return;
             
-            if (!msg) { alert('请输入您的症状描述！'); return; }
+            try {
+                const { data, error } = await supabase.from('comments').select('*').order('created_at', { ascending: false });
+                if (error) {
+                    console.error('读取失败:', error);
+                    return;
+                }
+                
+                const list = document.getElementById('list');
+                list.innerHTML = '';
+                
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'comment';
+                    
+                    let nameClass = 'name';
+                    if (['Dibajiaba', 'D8+8', '天道'].includes(item.username)) nameClass += ' admin';
+                    if (['烟火夏天'].includes(item.username)) nameClass += ' shareholder';
 
-            const { error } = await supabase.from('comments').insert([{ username: user, content: msg }]);
-            if (error) { 
-                alert('发送失败！请检查网络或数据库配置。'); 
-                console.error(error); 
-            } else {
-                document.getElementById('message').value = '';
-                loadData();
+                    const date = new Date(item.created_at).toLocaleString('zh-CN');
+
+                    div.innerHTML = `
+                        <div class="comment-head">
+                            <span class="${nameClass}">${item.username}</span>
+                            <span class="time">${date}</span>
+                        </div>
+                        <div class="content">${item.content}</div>
+                    `;
+                    list.appendChild(div);
+                });
+            } catch (err) {
+                console.error('网络异常:', err);
             }
         }
 
+        // 提交留言
+        async function submitComment() {
+            // 拦截测试：如果库没加载出来，会弹这个窗
+            if (!supabase) {
+                alert('Supabase 库加载失败，请检查网络或刷新页面。');
+                return;
+            }
+
+            const user = document.getElementById('username').value.trim() || '匿名受害者';
+            const msg = document.getElementById('message').value.trim();
+            
+            if (!msg) { 
+                alert('请先输入您的症状描述！'); 
+                return; 
+            }
+
+            try {
+                const { data, error } = await supabase.from('comments').insert([{ username: user, content: msg }]);
+                
+                if (error) { 
+                    console.error('数据库拦截:', error); 
+                    alert('发送失败，被数据库拦截！请检查 RLS 权限。'); 
+                } else {
+                    document.getElementById('message').value = '';
+                    loadData(); 
+                }
+            } catch (err) {
+                console.error('网络异常:', err);
+                alert('发送失败，网络异常！');
+            }
+        }
+
+        // 页面加载时拉取数据
         window.onload = loadData;
     </script>
 </body>
